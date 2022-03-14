@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -50,7 +56,12 @@ code {
   flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
-  width: 50%;
+  width: 80%;
+  margin-top: 5%;
+}
+
+.listTitle {
+  font-size: 2rem;
 }
 
 .listContainer {
@@ -70,6 +81,6 @@ code {
 }
 
 .active {
-  font-size: 2.3rem;
+  font-size: 2.7rem;
   color: rgb(179, 125, 8);
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Map, Marker } from 'pigeon-maps';
 import { stamenToner } from 'pigeon-maps/providers';
+import { v4 as uuidv4 } from 'uuid';
 
 function MyMap({
   latitude,
@@ -24,7 +25,7 @@ function MyMap({
           {coordinates &&
             coordinates.map((e, i) => (
               <Marker
-                key={i}
+                key={uuidv4()}
                 width={40}
                 anchor={[e[1], e[0]]}
                 color={clicked[i] ? 'orange' : 'green'}

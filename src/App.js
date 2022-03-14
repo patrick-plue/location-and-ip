@@ -5,7 +5,7 @@ import MyMap from './components/MyMap';
 import TouristInfos from './components/TouristInfos';
 
 function App() {
-  const [ip, setIp] = useState('92.214.130.110');
+  const [ip, setIp] = useState('');
   const [location, setLocation] = useState('DE');
   const [timezone, setTimezone] = useState('+01:00');
   const [latitude, setLatitude] = useState();
@@ -43,28 +43,28 @@ function App() {
     navigator.geolocation.getCurrentPosition(success, error, options);
   }, []);
 
-  // //   get ip-adresse-timezone and country
-  // const url = `https://geo.ipify.org/api/v2/country?apiKey=${process.env.REACT_APP_IPIFY_KEY}`;
+  //   get ip-adresse-timezone and country
+  const url = `https://geo.ipify.org/api/v2/country?apiKey=${process.env.REACT_APP_IPIFY_KEY}`;
 
-  // // max. 1000 Requests
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  // max. 1000 Requests
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  // function fetchData() {
-  //   axios
-  //     .get(url)
-  //     .then(function (response) {
-  //       console.log(response.data);
-  //       console.log(response);
-  //       setIp(response.data.ip);
-  //       setLocation(response.data.location.country);
-  //       setTimezone(response.data.location.timezone);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
+  function fetchData() {
+    axios
+      .get(url)
+      .then(function (response) {
+        console.log(response.data);
+        console.log(response);
+        setIp(response.data.ip);
+        setLocation(response.data.location.country);
+        setTimezone(response.data.location.timezone);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   //getInformation about location
 

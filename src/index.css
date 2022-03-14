@@ -5,9 +5,71 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: rgb(241, 241, 244);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.card {
+  display: flex;
+  background-color: rgb(9, 34, 116);
+  padding: 20px;
+  gap: 2%;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  -webkit-box-shadow: 5px 5px 0px 0px #289fed, 10px 10px 0px 0px #5fb8ff,
+    15px 15px 0px 0px #a1d8ff, 20px 20px 0px 0px #cae6ff,
+    25px 25px 0px 0px #e1eeff, -3px 5px 15px 5px rgba(171, 42, 167, 0);
+  box-shadow: 5px 5px 0px 0px #289fed, 10px 10px 0px 0px #5fb8ff,
+    15px 15px 0px 0px #a1d8ff, 20px 20px 0px 0px #cae6ff,
+    25px 25px 0px 0px #e1eeff, -3px 5px 15px 5px rgba(171, 42, 167, 0);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5% 5%;
+}
+
+.mapFrame {
+  border: 1px dashed white;
+  padding: 10px;
+}
+
+.list {
+  list-style: none;
+  border-radius: 5%;
+  background-color: lightsteelblue;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  width: 50%;
+}
+
+.listContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.listItem {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: black;
+}
+
+.listItem:hover {
+  color: lightslategray;
+  cursor: pointer;
+}
+
+.active {
+  font-size: 2.3rem;
+  color: rgb(179, 125, 8);
 }

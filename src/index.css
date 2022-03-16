@@ -11,7 +11,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: rgb(241, 241, 244);
+
+  background: linear-gradient(90deg, lightsalmon, lightcoral);
 }
 
 code {
@@ -21,43 +22,38 @@ code {
 
 .card {
   display: flex;
-  background-color: rgb(9, 34, 116);
+  flex-wrap: wrap;
+  background-color: wheat;
+  border-radius: 5px;
   padding: 20px;
-  gap: 2%;
+  gap: 5%;
   justify-content: center;
   text-align: center;
-  color: white;
-  -webkit-box-shadow: 5px 5px 0px 0px #289fed, 10px 10px 0px 0px #5fb8ff,
-    15px 15px 0px 0px #a1d8ff, 20px 20px 0px 0px #cae6ff,
-    25px 25px 0px 0px #e1eeff, -3px 5px 15px 5px rgba(171, 42, 167, 0);
-  box-shadow: 5px 5px 0px 0px #289fed, 10px 10px 0px 0px #5fb8ff,
-    15px 15px 0px 0px #a1d8ff, 20px 20px 0px 0px #cae6ff,
-    25px 25px 0px 0px #e1eeff, -3px 5px 15px 5px rgba(171, 42, 167, 0);
+  color: rgb(17, 17, 17);
+  box-shadow: 0px 0px 10px 5px sandybrown;
+  width: 95%;
 }
 
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin: 5% 5%;
-}
-
-.mapFrame {
-  border: 1px dashed white;
-  padding: 10px;
 }
 
 .list {
   list-style: none;
   border-radius: 5%;
-  background-color: lightsteelblue;
-  padding: 2rem;
+  background-color: rgb(194, 225, 203);
+  padding: 3rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
-  width: 80%;
+  width: 100%;
   margin-top: 5%;
+  display: flex;
+  flex-direction: column;
 }
 
 .listTitle {
@@ -81,6 +77,6 @@ code {
 }
 
 .active {
-  font-size: 2.7rem;
-  color: rgb(179, 125, 8);
+  font-size: 1.5rem;
+  color: rgb(179, 8, 74);
 }

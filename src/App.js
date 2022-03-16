@@ -43,28 +43,28 @@ function App() {
     navigator.geolocation.getCurrentPosition(success, error, options);
   }, []);
 
-  //   get ip-adresse-timezone and country
-  const url = `https://geo.ipify.org/api/v2/country?apiKey=${process.env.REACT_APP_IPIFY_KEY}`;
+  // //   get ip-adresse-timezone and country
+  // const url = `https://geo.ipify.org/api/v2/country?apiKey=${process.env.REACT_APP_IPIFY_KEY}`;
 
-  // max. 1000 Requests
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // // max. 1000 Requests
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  function fetchData() {
-    axios
-      .get(url)
-      .then(function (response) {
-        console.log(response.data);
-        console.log(response);
-        setIp(response.data.ip);
-        setLocation(response.data.location.country);
-        setTimezone(response.data.location.timezone);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+  // function fetchData() {
+  //   axios
+  //     .get(url)
+  //     .then(function (response) {
+  //       console.log(response.data);
+  //       console.log(response);
+  //       setIp(response.data.ip);
+  //       setLocation(response.data.location.country);
+  //       setTimezone(response.data.location.timezone);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }
 
   //getInformation about location
 
@@ -72,12 +72,11 @@ function App() {
     if (latitude && longitude) {
       axios
         .get(
-          `https://api.opentripmap.com/0.1/en/places/radius?radius=10000&lon=${longitude}&lat=${latitude}&kinds=architecture&limit=7&rate=3h&apikey=${process.env.REACT_APP_OPENTRIPMAP_KEY}`
+          `https://api.opentripmap.com/0.1/en/places/radius?radius=20000&lon=${longitude}&lat=${latitude}&kinds=architecture&limit=7&rate=3h&apikey=${process.env.REACT_APP_OPENTRIPMAP_KEY}`
         )
         .then(function (response) {
           saveHistoricPlacesNames(response.data.features);
           saveCoordinatesHistoricPlaces(response.data.features);
-          console.log(response);
         })
         .catch(function (error) {
           console.log(error);
@@ -101,20 +100,22 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <div className="card">
-        <Data ip={ip} location={location} timezone={timezone} />
-        <MyMap
-          latitude={latitude}
-          longitude={longitude}
-          coordinates={coordinates}
-          historicPlaces={historicPlaces}
-          changeClickedStatus={changeClickedStatus}
-          clicked={clicked}
-        />
-        <TouristInfos historicPlaces={historicPlaces} clicked={clicked} />
+    <>
+      <div className="container">
+        <div className="card">
+          <Data ip={ip} location={location} timezone={timezone} />
+          <MyMap
+            latitude={latitude}
+            longitude={longitude}
+            coordinates={coordinates}
+            historicPlaces={historicPlaces}
+            changeClickedStatus={changeClickedStatus}
+            clicked={clicked}
+          />
+          <TouristInfos historicPlaces={historicPlaces} clicked={clicked} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

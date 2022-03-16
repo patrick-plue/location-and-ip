@@ -1,6 +1,5 @@
 import React from 'react';
 import { Map, Marker } from 'pigeon-maps';
-import { stamenToner } from 'pigeon-maps/providers';
 import { v4 as uuidv4 } from 'uuid';
 
 function MyMap({
@@ -12,14 +11,14 @@ function MyMap({
   clicked,
 }) {
   return (
-    <div className="mapFrame">
+    <div>
       {latitude && longitude && (
         <Map
-          provider={stamenToner}
-          height={500}
-          width={500}
+          height={400}
+          width={400}
           defaultCenter={[latitude, longitude]}
           defaultZoom={13}
+          className="mapFrame"
         >
           <Marker width={50} anchor={[latitude, longitude]} color="red" />
           {coordinates &&

@@ -15,7 +15,7 @@ function MyMap({
       {latitude && longitude && (
         <Map
           height={400}
-          width={400}
+          width={500}
           defaultCenter={[latitude, longitude]}
           defaultZoom={13}
           className="mapFrame"

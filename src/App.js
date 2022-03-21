@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Data from './components/Data';
 import MyMap from './components/MyMap';
 import TouristInfos from './components/TouristInfos';
+import WeatherInfo from './components/WeatherInfo';
 
 function App() {
   const [ip, setIp] = useState('');
@@ -11,6 +11,7 @@ function App() {
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
   const [historicPlaces, setHistoricPlaces] = useState();
+  const [weatherData, setWeatherData] = useState();
   const [coordinates, setCoordinates] = useState([]);
   const [clicked, SetClicked] = useState([
     false,
@@ -42,29 +43,6 @@ function App() {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success, error, options);
   }, []);
-
-  //   get ip-adresse-timezone and country
-  const url = `https://geo.ipify.org/api/v2/country?apiKey=${process.env.REACT_APP_IPIFY_KEY}`;
-
-  // max. 1000 Requests
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  function fetchData() {
-    axios
-      .get(url)
-      .then(function (response) {
-        console.log(response.data);
-        console.log(response);
-        setIp(response.data.ip);
-        setLocation(response.data.location.country);
-        setTimezone(response.data.location.timezone);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
 
   //getInformation about location
 
@@ -99,6 +77,24 @@ function App() {
     SetClicked(copyClicked);
   }
 
+  // get weather data for current location
+
+  useEffect(() => {
+    if (latitude && longitude) {
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_KEY}`
+        )
+        .then((response) => {
+          console.log(response.data);
+          setWeatherData(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [latitude, longitude]);
+
   return (
     <>
       <div className="container">
@@ -111,8 +107,13 @@ function App() {
             changeClickedStatus={changeClickedStatus}
             clicked={clicked}
           />
-          <TouristInfos historicPlaces={historicPlaces} clicked={clicked} />
-          <Data ip={ip} location={location} timezone={timezone} />
+          <TouristInfos
+            historicPlaces={historicPlaces}
+            clicked={clicked}
+            cityName={weatherData}
+          />
+          <WeatherInfo weatherData={weatherData} />
+          {/* <Data ip={ip} location={location} timezone={timezone} /> */}
         </div>
       </div>
     </>

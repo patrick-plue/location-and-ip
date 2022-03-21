@@ -5,8 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 function MyMap({
   latitude,
   longitude,
-  coordinates,
-  historicPlaces,
+  latitudeForMarker,
+  longitudeForMarker,
   changeClickedStatus,
   clicked,
 }) {
@@ -21,12 +21,19 @@ function MyMap({
           className="mapFrame"
         >
           <Marker width={50} anchor={[latitude, longitude]} color="red" />
-          {coordinates &&
-            coordinates.map((e, i) => (
+          <Marker
+            width={50}
+            anchor={[latitudeForMarker[0], longitudeForMarker[0]]}
+            color="red"
+          />
+
+          {latitudeForMarker &&
+            longitudeForMarker &&
+            latitudeForMarker.map((e, i) => (
               <Marker
                 key={uuidv4()}
                 width={40}
-                anchor={[e[1], e[0]]}
+                anchor={[latitudeForMarker[i], longitudeForMarker[i]]}
                 color={clicked[i] ? 'orange' : 'green'}
                 onClick={() => changeClickedStatus(i)}
               />

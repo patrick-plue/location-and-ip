@@ -3,12 +3,16 @@
     flex-direction: column;
   }
 
+  .card {
+    height: 120vh;
+  }
+
   .list {
     flex-direction: row;
   }
 
   .listItem {
-    font-size: 0.5rem;
+    font-size: 0.3rem;
   }
 
   .listContainer {
@@ -19,5 +23,9 @@
 
   .listTitle {
     display: none;
+  }
+
+  .weaterItem {
+    font-size: 0.3rem;
   }
 }

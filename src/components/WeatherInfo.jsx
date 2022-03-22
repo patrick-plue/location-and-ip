@@ -1,6 +1,5 @@
 import React from 'react';
 import '../assets/weatherinfos.css';
-import '../assets/mediaqu.css';
 
 function WeatherInfo({ weatherData }) {
   return (

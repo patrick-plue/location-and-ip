@@ -4,6 +4,7 @@ import MyMap from './components/MyMap';
 import TouristInfos from './components/TouristInfos';
 import WeatherInfo from './components/WeatherInfo';
 import './assets/index.css';
+import './assets/mediaqu.css';
 
 function App() {
   const [ip, setIp] = useState('');

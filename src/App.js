@@ -4,18 +4,15 @@ import MyMap from './components/MyMap';
 import TouristInfos from './components/TouristInfos';
 import WeatherInfo from './components/WeatherInfo';
 import './assets/index.css';
+import './assets/mediaqu.css';
 
 function App() {
-  const [ip, setIp] = useState('');
-  const [location, setLocation] = useState('DE');
-  const [timezone, setTimezone] = useState('+01:00');
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
   const [places, setPlaces] = useState();
   const [weatherData, setWeatherData] = useState();
   const [latitudeForMarker, setLatitudeForMarker] = useState([]);
   const [longitudeForMarker, setLongitudeforMarker] = useState([]);
-
   const [clicked, SetClicked] = useState([]);
 
   // Geolocation of current Position
@@ -38,24 +35,6 @@ function App() {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success, error, options);
   }, []);
-
-  //getInformation about location
-
-  // useEffect(() => {
-  //   if (latitude && longitude) {
-  //     axios
-  //       .get(
-  //         `https://api.opentripmap.com/0.1/en/places/radius?radius=20000&lon=${longitude}&lat=${latitude}&kinds=architecture&limit=7&rate=3h&apikey=${process.env.REACT_APP_OPENTRIPMAP_KEY}`
-  //       )
-  //       .then(function (response) {
-  //         saveHistoricPlacesNames(response.data.features);
-  //         saveCoordinatesHistoricPlaces(response.data.features);
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   }
-  // }, [latitude, longitude]);
 
   function changeClickedStatus(index) {
     const copyClicked = [...clicked];
@@ -91,11 +70,13 @@ function App() {
     },
   };
 
+  // get information about user location
+
   useEffect(() => {
     if (longitude && latitude) {
       axios
         .get(
-          `https://api.foursquare.com/v3/places/nearby?ll=${latitude}%2C${longitude}&limit=8&search=sights`,
+          `https://api.foursquare.com/v3/places/nearby?ll=${latitude}%2C${longitude}&limit=5&search=sights`,
           fsoptions
         )
         .then((response) => {
@@ -133,7 +114,6 @@ function App() {
               changeClickedStatus={changeClickedStatus}
             />
           </div>
-          {/* <Data ip={ip} location={location} timezone={timezone} /> */}
         </div>
       </div>
     </>

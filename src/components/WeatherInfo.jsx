@@ -1,6 +1,5 @@
 import React from 'react';
 import '../assets/weatherinfos.css';
-import '../assets/mediaqu.css';
 
 function WeatherInfo({ weatherData }) {
   return (
@@ -8,12 +7,12 @@ function WeatherInfo({ weatherData }) {
       {weatherData && (
         <ul>
           <li className="weatherItem">
-            temperature {weatherData.main.temp} Grad Celsius
+            temperature {weatherData.main.temp} degrees Celsius
           </li>
+          <li className="weatherItem">{weatherData.weather[0].description}</li>
           <li className="weatherItem">
-            overall:{weatherData.weather[0].description}
+            wind speed:{weatherData.wind.speed} km/h
           </li>
-          <li className="weatherItem">wind speed:{weatherData.wind.speed}</li>
         </ul>
       )}
     </div>

@@ -1,6 +1,5 @@
 .listContainer {
   list-style: none;
-  border-radius: 5%;
   align-items: center;
   opacity: 0.8;
   background-color: aliceblue;
@@ -12,7 +11,9 @@
 }
 
 .listTitle {
-  font-size: 0.5rem;
+  font-size: 0.7rem;
+  margin-bottom: 1%;
+  text-transform: uppercase;
 }
 
 .list {

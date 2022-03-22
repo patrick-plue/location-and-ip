@@ -6,7 +6,7 @@ export default function TouristInfos({ places, clicked, changeClickedStatus }) {
   return (
     <div>
       <div className="listContainer">
-        <h3 className="listTitle">Interesting Locations nearby</h3>
+        <h3 className="listTitle">interesting locations nearby</h3>
         <ul className="list">
           {places &&
             places.map((place, i) => (

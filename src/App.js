@@ -3,28 +3,20 @@ import React, { useEffect, useState } from 'react';
 import MyMap from './components/MyMap';
 import TouristInfos from './components/TouristInfos';
 import WeatherInfo from './components/WeatherInfo';
+import './assets/index.css';
 
 function App() {
   const [ip, setIp] = useState('');
   const [location, setLocation] = useState('DE');
   const [timezone, setTimezone] = useState('+01:00');
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
-  const [historicPlaces, setHistoricPlaces] = useState();
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
   const [places, setPlaces] = useState();
   const [weatherData, setWeatherData] = useState();
   const [latitudeForMarker, setLatitudeForMarker] = useState([]);
   const [longitudeForMarker, setLongitudeforMarker] = useState([]);
 
-  const [clicked, SetClicked] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
+  const [clicked, SetClicked] = useState([]);
 
   // Geolocation of current Position
   const options = {
@@ -103,7 +95,7 @@ function App() {
     if (longitude && latitude) {
       axios
         .get(
-          `https://api.foursquare.com/v3/places/nearby?ll=${latitude}%2C${longitude}&limit=8`,
+          `https://api.foursquare.com/v3/places/nearby?ll=${latitude}%2C${longitude}&limit=8&search=sights`,
           fsoptions
         )
         .then((response) => {
@@ -123,20 +115,24 @@ function App() {
     <>
       <div className="container">
         <div className="card">
-          <MyMap
-            latitude={latitude}
-            longitude={longitude}
-            longitudeForMarker={longitudeForMarker}
-            latitudeForMarker={latitudeForMarker}
-            changeClickedStatus={changeClickedStatus}
-            clicked={clicked}
-          />
-          <TouristInfos
-            places={places}
-            clicked={clicked}
-            cityName={weatherData}
-          />
-          <WeatherInfo weatherData={weatherData} />
+          {weatherData && <h2>{weatherData.name}</h2>}
+          <div className="top">
+            <MyMap
+              latitude={latitude}
+              longitude={longitude}
+              longitudeForMarker={longitudeForMarker}
+              latitudeForMarker={latitudeForMarker}
+              changeClickedStatus={changeClickedStatus}
+              clicked={clicked}
+              cityName={weatherData}
+            />
+            <WeatherInfo weatherData={weatherData} />
+            <TouristInfos
+              places={places}
+              clicked={clicked}
+              changeClickedStatus={changeClickedStatus}
+            />
+          </div>
           {/* <Data ip={ip} location={location} timezone={timezone} /> */}
         </div>
       </div>

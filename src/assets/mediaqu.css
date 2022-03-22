@@ -1,0 +1,23 @@
+@media only screen and (max-width: 950px) {
+  .top {
+    flex-direction: column;
+  }
+
+  .list {
+    flex-direction: row;
+  }
+
+  .listItem {
+    font-size: 0.5rem;
+  }
+
+  .listContainer {
+    top: unset;
+    bottom: 0px;
+    height: unset;
+  }
+
+  .listTitle {
+    display: none;
+  }
+}

@@ -20,18 +20,33 @@ code {
     monospace;
 }
 
+.city {
+  font-size: 2rem;
+  padding: 1rem;
+}
+
 .card {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   background-color: wheat;
   border-radius: 5px;
   padding: 20px;
   gap: 5%;
   justify-content: center;
+  align-items: center;
   text-align: center;
   color: rgb(17, 17, 17);
   box-shadow: 0px 0px 10px 5px sandybrown;
-  width: 95%;
+  width: 90vw;
+  height: 70vh;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 90%;
+  height: 90%;
 }
 
 .container {
@@ -41,42 +56,15 @@ code {
   margin: 5% 5%;
 }
 
-.list {
-  list-style: none;
-  border-radius: 5%;
-  background-color: rgb(194, 225, 203);
-  padding: 3rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  width: 100%;
-  margin-top: 5%;
-  display: flex;
-  flex-direction: column;
-}
-
-.listTitle {
-  font-size: 2rem;
-}
-
-.listContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.listItem {
-  font-size: 1.2rem;
-  text-decoration: none;
-  color: black;
-}
-
-.listItem:hover {
-  color: lightslategray;
-  cursor: pointer;
-}
-
 .active {
-  font-size: 1.5rem;
+  font-size: 0.6rem;
   color: rgb(179, 8, 74);
+}
+
+.hide {
+  display: none;
+}
+
+.distance {
+  font-size: 10px;
 }

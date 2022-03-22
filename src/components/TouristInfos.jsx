@@ -1,22 +1,25 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import '../assets/touristinfos.css';
 
-export default function TouristInfos({ places, clicked, cityName }) {
-  console.log(clicked);
+export default function TouristInfos({ places, clicked, changeClickedStatus }) {
   return (
     <div>
       <div className="listContainer">
+        <h3 className="listTitle">Interesting Locations nearby</h3>
         <ul className="list">
-          {cityName && (
-            <h3 className="listTitle">
-              Interesting Locations nearby in {cityName.name}
-            </h3>
-          )}
           {places &&
-            places.map((place) => (
-              <div className={clicked ? 'active' : 'green'}>
-                <p>{place.name}</p>
-                <p>{place.distance}m away</p>
+            places.map((place, i) => (
+              <div
+                className="listItem"
+                key={uuidv4()}
+                onClick={() => changeClickedStatus(i)}
+              >
+                <p className={clicked[i] ? 'active' : ''}>{place.name}</p>
+                <p>{place.categories[0].name}</p>
+                <p className={clicked[i] ? 'distance' : 'hide'}>
+                  {place.distance}m away
+                </p>
               </div>
             ))}
         </ul>

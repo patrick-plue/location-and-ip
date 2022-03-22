@@ -1,0 +1,13 @@
+.weatherContainer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: aliceblue;
+  opacity: 0.8;
+}
+
+.weatherItem {
+  list-style-type: none;
+  padding: 1%;
+  font-size: 0.8rem;
+}

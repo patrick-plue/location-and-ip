@@ -1,0 +1,36 @@
+.listContainer {
+  list-style: none;
+  border-radius: 5%;
+  align-items: center;
+  opacity: 0.8;
+  background-color: aliceblue;
+  padding: 1%;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+}
+
+.listTitle {
+  font-size: 0.5rem;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.listItem {
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: black;
+  padding: 1.5%;
+  border: 1px dashed black;
+}
+
+.listItem:hover {
+  color: lightslategray;
+  cursor: pointer;
+}

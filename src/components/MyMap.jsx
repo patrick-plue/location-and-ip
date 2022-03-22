@@ -9,24 +9,17 @@ function MyMap({
   longitudeForMarker,
   changeClickedStatus,
   clicked,
+  cityName,
 }) {
   return (
-    <div>
+    <>
       {latitude && longitude && (
         <Map
-          height={400}
-          width={500}
           defaultCenter={[latitude, longitude]}
           defaultZoom={13}
           className="mapFrame"
         >
           <Marker width={50} anchor={[latitude, longitude]} color="red" />
-          <Marker
-            width={50}
-            anchor={[latitudeForMarker[0], longitudeForMarker[0]]}
-            color="red"
-          />
-
           {latitudeForMarker &&
             longitudeForMarker &&
             latitudeForMarker.map((e, i) => (
@@ -41,7 +34,7 @@ function MyMap({
         </Map>
       )}
       {!latitude && !longitude && <p>Loading</p>}
-    </div>
+    </>
   );
 }
 

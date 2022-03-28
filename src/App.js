@@ -81,6 +81,7 @@ function App() {
         )
         .then((response) => {
           setPlaces(response.data.results);
+          console.log(response.data);
           setLatitudeForMarker(
             response.data.results.map((place) => place.geocodes.main.latitude)
           );
